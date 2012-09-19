@@ -1,0 +1,11 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+  
+<suite name="JavascriptTestsSuite" verbose="1" >
+    <parameter name="libraryFiles" value="jsunit.js" />
+    <parameter name="testFiles" value="demo.js" />
+    <test name="JavascriptTestsTest" >
+        <classes>
+            <class name="com.weaselworks.scripting.JavascriptUnitTestRunner" />
+        </classes>
+    </test>
+</suite>
