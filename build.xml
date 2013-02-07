@@ -5,7 +5,7 @@
 	<!-- Load in their environment-specific propeties -->
 
 	<property file="${user.home}/build.properties" />
-<property file="config.properties" /> 
+	<property file="config.properties" /> 
 
 	<include file="build-utils.xml" />
 	<include file="build-repos.xml" />

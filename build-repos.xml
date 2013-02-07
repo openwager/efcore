@@ -8,7 +8,7 @@
   <artifact:localRepository id="local" path="${user.home}/.m2/repository/" /> 
 
 <!--
-	<artifact:remoteRepository id="makingfun.thirdparty" url="http://util.makingfun.com:8081/nexus/content/repositories/thirdparty/" >
+	<artifact:remoteRepository id="etherfirma.thirdparty" url="http://maven.etherfirma.com:8081/nexus/content/repositories/thirdparty/" >
 		<authentication username="${maven.username}" password="${maven.password}" />
 	</artifact:remoteRepository>
 -->	
