@@ -1,6 +1,5 @@
 package com.weaselworks.util.state;
 
-import java.util.*;
 
 /**
  * 

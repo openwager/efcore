@@ -12,7 +12,7 @@ import com.weaselworks.io.*;
  *
  */
 
-@SuppressWarnings("unchecked")
+@SuppressWarnings("rawtypes")
 public class SetCodec
 	extends XIOCodecSupport<Set>
 		implements XIOCodec<Set>

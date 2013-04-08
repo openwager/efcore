@@ -239,28 +239,33 @@ public class IOUtil
     	throws IOException
     {
         final InputStream is = new FileInputStream (file);
-        final long length = file.length ();
-        if (length > Integer.MAX_VALUE) {
-        	throw new IOException ("File too large: " + length + " bytes"); 
+        try { 
+	        final long length = file.length ();
+	        if (length > Integer.MAX_VALUE) {
+	        	throw new IOException ("File too large: " + length + " bytes"); 
+	        }
+	        
+	        final byte[] bytes = new byte[(int)length];
+	        
+	        // Read in the bytes
+	        int offset = 0;
+	        int numRead = 0;
+	        while (offset < bytes.length
+	               && (numRead=is.read(bytes, offset, bytes.length-offset)) >= 0) {
+	            offset += numRead;
+	        }
+	    
+	        // Ensure all the bytes have been read in
+	        if (offset < bytes.length) {
+	            throw new IOException("Could not completely read file "+ file.getName());
+	        }
+	        return bytes;
+	    }    
+        finally { 
+        	is.close();
         }
         
-        final byte[] bytes = new byte[(int)length];
-        
-        // Read in the bytes
-        int offset = 0;
-        int numRead = 0;
-        while (offset < bytes.length
-               && (numRead=is.read(bytes, offset, bytes.length-offset)) >= 0) {
-            offset += numRead;
-        }
-    
-        // Ensure all the bytes have been read in
-        if (offset < bytes.length) {
-            throw new IOException("Could not completely read file "+ file.getName());
-        }
-    
-        is.close();
-        return bytes;
+        // NOT REACHED
     }    
     
 	public static

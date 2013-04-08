@@ -10,6 +10,7 @@ import com.weaselworks.util.*;
  *
  */
 
+@SuppressWarnings("serial")
 @MappedSuperclass
 abstract public class LongIdThing
 	extends Thing

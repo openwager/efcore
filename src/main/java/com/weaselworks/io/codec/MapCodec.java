@@ -12,7 +12,7 @@ import com.weaselworks.io.*;
  *
  */
 
-@SuppressWarnings("unchecked")
+@SuppressWarnings("rawtypes")
 public class MapCodec
 	extends XIOCodecSupport<Map>
 		implements XIOCodec<Map>

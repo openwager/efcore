@@ -12,6 +12,7 @@ import com.weaselworks.util.*;
  *
  */
 
+@SuppressWarnings("serial")
 @MappedSuperclass
 public class PropertiedManualIdThing
 	extends ManualIdThing
