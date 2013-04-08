@@ -152,7 +152,7 @@ public class JsonCodecFactorySupport
 	 * @see com.atmosphir.site.intercept.codec.json.JsonCodecFactory#encode(java.lang.Object)
 	 */
 	
-	@SuppressWarnings ("unchecked")
+	@SuppressWarnings ({ "unchecked", "rawtypes" })
 	public
 	JSONObject encode (final Object obj)
 		throws Exception

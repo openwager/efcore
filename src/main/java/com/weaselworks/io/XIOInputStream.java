@@ -476,8 +476,8 @@ public class XIOInputStream
     	return Enum.valueOf (type, val);
     }
     
-    @SuppressWarnings("unchecked")
-    public
+    @SuppressWarnings("rawtypes")
+	public
     Object readObject ()
     	throws IOException
 	{

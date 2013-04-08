@@ -371,7 +371,7 @@ public class XIOOutputStream
 		return; 
 	}
 	
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public
 	void writeObject (final Object obj, final Class<?> type)
 		throws IOException

@@ -27,7 +27,8 @@ import org.testng.annotations.Test;
 
 public class JavascriptUnitTestRunner {
 
-    @Parameters({"libraryFiles", "testFiles"})
+    @SuppressWarnings("unchecked")
+	@Parameters({"libraryFiles", "testFiles"})
     @Factory
     public Object[] makeTests(String libraryFiles, String testFiles) {
         try {
@@ -39,8 +40,7 @@ public class JavascriptUnitTestRunner {
                 e.eval(new FileReader(s));
             }
 
-            List<JavascriptSuite> suites
-                = (List<JavascriptSuite>) e.eval("getTestsForTestNG()");
+            List<JavascriptSuite> suites = (List<JavascriptSuite>) e.eval("getTestsForTestNG()");
             List<Object> testNGtests = new LinkedList<Object>();
 
             for (JavascriptSuite suite : suites) {

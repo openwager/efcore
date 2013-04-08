@@ -67,7 +67,6 @@ public class JBossUtil
         return System.getProperty ("jboss.server.name");
     }
 	
-    @SuppressWarnings("deprecation")
     public static String getDBURL (final EntityManager entityManager)
         throws SQLException
     {

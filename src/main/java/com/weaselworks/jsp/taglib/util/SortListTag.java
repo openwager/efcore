@@ -29,7 +29,7 @@ public class SortListTag
      * @see javax.servlet.jsp.tagext.Tag#doEndTag()
      */
 
-    @SuppressWarnings("unchecked")
+    @SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
 	public
     int doEndTag ()
