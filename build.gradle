@@ -1,0 +1,30 @@
+apply plugin: 'java'
+apply plugin: 'maven'
+
+version = '1.0.3-gradle-SNAPSHOT'
+group = 'etherfirma' 
+artifact = 'efcore'
+
+repositories {
+  mavenCentral ()
+  mavenRepo (url: 'http://maven.etherfirma.com:8081/nexus/content/repositories/releases/', userName: "deployment", password: "squidly")
+  mavenRepo (url: 'http://maven.etherfirma.com:8081/nexus/content/repositories/snapshots/', userName: "deployment", password: "squidly")
+}
+
+dependencies { 
+  compile 'org.json:json:20090211'
+  compile 'log4j:log4j:1.2.16'
+  compile 'javaee:javaee-api:5'
+  compile 'org.testng:testng:6.5.2'
+  compile 'javax.transaction:jta:1.1'
+  compile 'hibernate:hibernate:3.0.5'
+//  compile' hibernate:hibernate-entitymanager:3.4.0.GA'
+
+  testCompile group: 'junit', name: 'junit', version: '4.8.+'
+
+  //deployerJars 'org.apache.maven.wagon:wagon-webdav:1.0-beta-2'
+//    deployerJars 'org.apache.maven.wagon:wagon-http:2.2'
+}
+
+
+// EOF 
