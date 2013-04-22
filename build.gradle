@@ -8,13 +8,8 @@ group = 'com.etherfirma'
 archivesBaseName = 'efcore'
 description = 'The core Java library'
 
-clean {
-  println ""
-  println "| group:    ${group}"
-  println "| artifact: ${archivesBaseName}"
-  println "| version:  ${version}"
-  println ""
-}
+targetCompatibility = "1.5"
+sourceCompatibility = "1.5"
 
 test {
     useTestNG()
