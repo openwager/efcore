@@ -4,9 +4,17 @@ apply plugin: 'maven'
 defaultTasks 'clean', 'build'
 
 version = '1.0.4-gradle-SNAPSHOT'
-group = 'etherfirma' 
+group = 'com.etherfirma' 
 archivesBaseName = 'efcore'
 description = 'The core Java library'
+
+clean {
+  println ""
+  println "| group:    ${group}"
+  println "| artifact: ${archivesBaseName}"
+  println "| version:  ${version}"
+  println ""
+}
 
 test {
     useTestNG()
