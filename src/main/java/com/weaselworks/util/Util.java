@@ -21,6 +21,17 @@ public class Util
     }
 
     public static
+    String whatIs (final Object o) 
+    { 
+    	if (o == null) {
+    		return "null"; 
+    	} else { 
+    		return "(" + o.getClass().getName () + ")";  
+    	}
+    	// NOT REACHED
+    }
+    
+    public static
     void dump (final Object o)
     {
     	if (o == null) {

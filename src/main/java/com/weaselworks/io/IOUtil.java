@@ -3,6 +3,9 @@ package com.weaselworks.io;
 import com.weaselworks.util.Pair;
 
 import java.io.*;
+import java.util.Enumeration;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipFile;
 
 /**
  *
@@ -18,6 +21,47 @@ public class IOUtil
         return ;
     }
 
+    /**
+     * 
+     * @param from
+     * @param to
+     * @throws IOException
+     */
+    
+    public static 
+	void unzipFile (final String from, final String to)
+		throws IOException
+	{
+		// Create the output directory
+		
+		final File dest = new File (to); 
+		dest.mkdirs (); 
+		
+		ZipFile zipFile = new ZipFile (from);
+	    Enumeration<? extends ZipEntry> entries = zipFile.entries ();
+	    
+	    try { 
+		    while (entries.hasMoreElements()) {
+		        final ZipEntry entry = entries.nextElement();
+		        if (entry.isDirectory ()) { 
+		        	continue; 
+		        }
+		        final File entryDestination = new File (to,  entry.getName());
+		        entryDestination.getParentFile().mkdirs();
+		        final InputStream in = zipFile.getInputStream (entry);
+		        final OutputStream out = new FileOutputStream (entryDestination);
+		        IOUtil.copy (in, out);
+		        IOUtil.safeClose (in);
+		        IOUtil.safeClose (out);
+		    }
+	    }
+	    finally { 
+	    	zipFile.close (); 
+	    }
+		    
+	    return; 
+	}
+    
     /**
      * 
      * @param os
