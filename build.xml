@@ -87,6 +87,7 @@ Available targets:
 			<dependency groupId="${jta.group}" artifactId="${jta.artifact}" version="${jta.version}" />
 			<dependency groupId="${hibernate.group}" artifactId="${hibernate.artifact}" version="${hibernate.version}" />
 			<dependency groupId="${hibernate-em.group}" artifactId="${hibernate-em.artifact}" version="${hibernate-em.version}" />
+			<dependency groupId="${vertx.group}" artifactId="${vertx.artifact}" version="${vertx.version}" />
 
 		</artifact:dependencies>
 		<copy todir="${lib.dir}">
