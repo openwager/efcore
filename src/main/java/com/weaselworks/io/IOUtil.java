@@ -20,25 +20,45 @@ public class IOUtil
     {
         return ;
     }
-
-    /**
-     * 
-     * @param from
-     * @param to
-     * @throws IOException
-     */
     
     public static 
 	void unzipFile (final String from, final String to)
 		throws IOException
 	{
+    	unzipFile (new File (from), new File (to)); 
+    	return; 
+	}
+	
+    public static
+    void unzipFile (final File from, final String to)
+        	throws IOException
+    {
+    	unzipFile (from, new File (to)); 
+    	return; 
+    }
+    
+    public static
+    void unzipFile (final String from, final File to)
+        	throws IOException
+    {
+    	unzipFile (new File (from), to); 
+    	return; 
+    }
+    
+    public static
+    void unzipFile (final File from, final File dest)
+        	throws IOException
+    {
 		// Create the output directory
 		
-		final File dest = new File (to); 
-		dest.mkdirs (); 
+    	if (! dest.exists ()) { 
+    		dest.mkdirs ();
+    	}
+
+		// And then unzip the file
 		
-		ZipFile zipFile = new ZipFile (from);
-	    Enumeration<? extends ZipEntry> entries = zipFile.entries ();
+		final ZipFile zipFile = new ZipFile (from);
+	    final Enumeration<? extends ZipEntry> entries = zipFile.entries ();
 	    
 	    try { 
 		    while (entries.hasMoreElements()) {
@@ -46,7 +66,7 @@ public class IOUtil
 		        if (entry.isDirectory ()) { 
 		        	continue; 
 		        }
-		        final File entryDestination = new File (to,  entry.getName());
+		        final File entryDestination = new File (dest, entry.getName());
 		        entryDestination.getParentFile().mkdirs();
 		        final InputStream in = zipFile.getInputStream (entry);
 		        final OutputStream out = new FileOutputStream (entryDestination);
