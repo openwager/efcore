@@ -105,6 +105,30 @@ public class JsonObjectUtil
 		}
 		return a; 
 	}
-}
+	
+	/**
+	 * 
+	 * @param json
+	 * @param path
+	 * @param value
+	 */
+	
+	public static <T>
+	void put (JsonObject json, final String [] paths, final T value)
+	{
+		final int len = paths.length; 
+		for (int i = 0; i < len - 1; i ++) { 
+			final String path = paths [i]; 
+			JsonObject child = json.getObject (path); 
+			if (child == null) { 
+				child = new JsonObject ();
+				json.putObject (path, child); 			
+			} 
+			json = child; 
+		}
+		json.putValue (paths [len - 1], value); 
+		return; 
+	}
+}	
 
 // EOF
