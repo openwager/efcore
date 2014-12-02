@@ -354,7 +354,18 @@ public class IOUtil
 		in.close (); 
 		return buf.toString (); 
 	}
-	
+
+    public static
+    void writeFile (final File file, final String contents)
+        throws IOException
+    {
+        final OutputStream os = new FileOutputStream (file);
+        os.write (contents.getBytes());
+        os.flush ();
+        os.close ();
+        return;
+    }
+
 	public static
 	String readFile (String filename)
 		throws IOException
