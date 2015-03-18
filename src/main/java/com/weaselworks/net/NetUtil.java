@@ -3,8 +3,12 @@ package com.weaselworks.net;
 import java.io.*;
 import java.net.*;
 import java.util.*;
+import javax.servlet.http.*;
 
 import com.weaselworks.io.*;
+import com.weaselworks.io.IOUtil;
+
+import javax.swing.text.html.HTML;
 
 public class NetUtil 
 {
@@ -119,10 +123,17 @@ public class NetUtil
 //		final String content = IOUtil.readFully (is); 
 
 		final URL url = new URL (urlstr); 
-		final URLConnection conn = url.openConnection (); 
-		final InputStream is = conn.getInputStream (); 
-		final String content = IOUtil.readFully (is); 
-		is.close (); 
+		final URLConnection conn = url.openConnection ();
+		if (conn instanceof HttpURLConnection) {
+			final HttpURLConnection hconn = (HttpURLConnection) conn;
+			if (hconn.getResponseCode() != HttpServletResponse.SC_OK) {
+				final String msg = String.format ("Invalid response code: %d (%s)", hconn.getResponseCode (), hconn.getResponseMessage ());
+				throw new IOException (msg);
+			}
+		}
+		final InputStream is = conn.getInputStream ();
+		final String content = IOUtil.readFully(is);
+		is.close ();
 		return content; 
 	}
 }
