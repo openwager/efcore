@@ -1,10 +1,12 @@
-package main.java.com.weaselworks.crypt;
+package com.weaselworks.crypt;
 
 import javax.crypto.BadPaddingException;
 import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.NoSuchPaddingException;
 import java.io.UnsupportedEncodingException;
 import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
 
 /**
  * Created by leecrawford on 3/17/15.
@@ -48,7 +50,7 @@ public interface CryptoBox
 
     public
     byte [] decrypt(final byte[] bs)
-            throws InvalidKeyException, BadPaddingException, IllegalBlockSizeException, InvalidAlgorithmParameterException;
+            throws InvalidKeyException, BadPaddingException, IllegalBlockSizeException, InvalidAlgorithmParameterException, NoSuchPaddingException, NoSuchAlgorithmException;
 
     /**
      *
@@ -63,7 +65,7 @@ public interface CryptoBox
 
     public
     String decrypt(String s)
-            throws UnsupportedEncodingException, IllegalBlockSizeException, BadPaddingException, InvalidAlgorithmParameterException, InvalidKeyException;
+            throws UnsupportedEncodingException, IllegalBlockSizeException, BadPaddingException, InvalidAlgorithmParameterException, InvalidKeyException, NoSuchAlgorithmException, NoSuchPaddingException;
 }
 
 // EOF

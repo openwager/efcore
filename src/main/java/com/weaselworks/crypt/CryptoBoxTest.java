@@ -1,4 +1,4 @@
-package main.java.com.weaselworks.crypt;
+package com.weaselworks.crypt;
 
 import java.io.DataInputStream;
 import java.io.IOException;

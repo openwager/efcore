@@ -1,4 +1,4 @@
-package main.java.com.weaselworks.crypt;
+package com.weaselworks.crypt;
 
 import javax.crypto.NoSuchPaddingException;
 import java.io.UnsupportedEncodingException;
