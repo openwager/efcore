@@ -20,9 +20,9 @@ public class DES3CryptoBox
     protected SecretKeySpec keyspec;
 
     public
-    DES3CryptoBox (final String saltString, final String keyString)
+    DES3CryptoBox (final byte [] salt, final String keyString)
     {
-        ivspec = new IvParameterSpec (saltString.getBytes ());
+        ivspec = new IvParameterSpec (salt);
         keyspec = new SecretKeySpec(keyString.getBytes (), "DESede");
         return;
     }

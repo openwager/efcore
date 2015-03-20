@@ -13,11 +13,13 @@ public class DES3CryptoBoxTest
     void main (final String [] args)
             throws Exception
     {
-        final String salt = "squidly!";
-        final String key = "hi there lee; how areyou";
-        final CryptoBox crypto = new DES3CryptoBox (salt, key);
+        final String key = "ItsAL0vel33DayinTh3NEigh";
+        final CryptoBoxFactory factory = new DES3CryptoBoxFactory (key);
 
-        final String encrypted = "5qkO+wVfZbgGsr35VXj0UQ==";
+        final String salt = "7433ba5d-c942-45a8-a81e-51e72b46f52e";
+        final CryptoBox crypto = factory.getInstance (salt);
+
+        final String encrypted = "vjFdee74/37Ll6GPLVntJQ==";
         final byte [] ciphertext = Base64.decode(encrypted);
         System.out.println ("cipher=" + HexUtil.encodeBytes(ciphertext));
         System.out.println ("bytes=" + ciphertext.length);
