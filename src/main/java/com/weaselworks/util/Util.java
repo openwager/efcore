@@ -1,3 +1,4 @@
+
 package com.weaselworks.util;
 
 import java.beans.*;
@@ -453,7 +454,7 @@ public class Util
 	 * @param a
 	 * @param b
 	 * @return
-	 */
+q	 */
 
 	public static
 	boolean arrayEquals (final char [] a, final char [] b) 

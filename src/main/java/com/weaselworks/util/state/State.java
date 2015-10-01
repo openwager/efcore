@@ -69,6 +69,15 @@ public class State
 
     protected StateEntryListenerSupport entryListeners;
 
+    public
+    void addEntryListeners (final StateEntryListener... lers)
+    {
+        for (final StateEntryListener ler : lers) {
+            addEntryListener (ler);
+        }
+        return;
+    }
+
     /**
      *
      * @param ler
@@ -83,6 +92,15 @@ public class State
             entryListeners = new StateEntryListenerSupport ();
         }
         entryListeners.addListener (ler);
+        return;
+    }
+
+    public
+    void removeEntryListener (final StateEntryListener... lers)
+    {
+        for (final StateEntryListener ler: lers) {
+            removeEntryListener (ler);
+        }
         return;
     }
 
@@ -120,6 +138,15 @@ public class State
 
     protected StateExitListenerSupport exitListeners;
 
+    public
+    void addExitListeners (final StateExitListener... lers)
+    {
+        for (final StateExitListener ler : lers) {
+            addExitListener (ler);
+        }
+        return;
+    }
+
     /**
      *
      * @param ler
@@ -134,6 +161,15 @@ public class State
             exitListeners = new StateExitListenerSupport ();
         }
         exitListeners.addListener (ler);
+        return;
+    }
+
+    public
+    void removeExitListeners (final StateExitListener... lers)
+    {
+        for (final StateExitListener ler : lers) {
+            removeExitListener (ler);
+        }
         return;
     }
 

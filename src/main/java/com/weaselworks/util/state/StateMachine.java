@@ -185,6 +185,15 @@ public class StateMachine
     protected Map<String, State> states = new HashMap<String, State> ();
 
     public
+    void addStates (final State... states)
+    {
+        for (final State state : states) {
+            addState (state);
+        }
+        return;
+    }
+
+    public
     void addState (final State state)
     {
         if (containsState (state.getName ())) {

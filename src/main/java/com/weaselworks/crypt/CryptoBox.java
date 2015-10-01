@@ -25,7 +25,7 @@ public interface CryptoBox
 
     public
     byte [] encrypt(byte[] bs)
-            throws BadPaddingException, IllegalBlockSizeException, InvalidAlgorithmParameterException, InvalidKeyException;
+            throws BadPaddingException, IllegalBlockSizeException, InvalidAlgorithmParameterException, InvalidKeyException, NoSuchPaddingException, NoSuchAlgorithmException;
 
     /**
      *
@@ -39,7 +39,7 @@ public interface CryptoBox
 
     public
     String encrypt(String s)
-            throws IllegalBlockSizeException, InvalidKeyException, InvalidAlgorithmParameterException, BadPaddingException, UnsupportedEncodingException;
+            throws IllegalBlockSizeException, InvalidKeyException, InvalidAlgorithmParameterException, BadPaddingException, UnsupportedEncodingException, NoSuchAlgorithmException, NoSuchPaddingException;
 
     /**
      *

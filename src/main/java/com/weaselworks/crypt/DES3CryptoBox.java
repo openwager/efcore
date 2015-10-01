@@ -30,14 +30,17 @@ public class DES3CryptoBox
 
     @Override
     public byte[] encrypt(byte[] bs)
-            throws BadPaddingException, IllegalBlockSizeException, InvalidAlgorithmParameterException, InvalidKeyException
+            throws BadPaddingException, IllegalBlockSizeException, InvalidAlgorithmParameterException, InvalidKeyException, NoSuchPaddingException, NoSuchAlgorithmException
     {
-        throw new java.lang.RuntimeException ("Unimplemented");
+        final Cipher cipher = Cipher.getInstance ("DESede/CBC/PKCS5Padding");
+        cipher.init (Cipher.ENCRYPT_MODE, keyspec, ivspec);
+        final byte [] out = cipher.doFinal (bs);
+        return out;
     }
 
     @Override
     public String encrypt(String in)
-            throws IllegalBlockSizeException, InvalidKeyException, InvalidAlgorithmParameterException, BadPaddingException, UnsupportedEncodingException
+            throws IllegalBlockSizeException, InvalidKeyException, InvalidAlgorithmParameterException, BadPaddingException, UnsupportedEncodingException, NoSuchAlgorithmException, NoSuchPaddingException
     {
         final byte [] out = encrypt (in.getBytes ("UTF-8"));
         return new String (out);
