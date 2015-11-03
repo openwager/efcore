@@ -4,8 +4,6 @@ import java.util.*;
 
 import org.json.*;
 
-import com.weaselworks.svc.data.*;
-
 /**
  * 
  * @author crawford
@@ -120,7 +118,7 @@ abstract public class JsonCodecSupport<Type >
 	
 	/**
 	 * 
-	 * @param array
+	 * @param objs
 	 * @return
 	 * @throws Exception
 	 */
@@ -144,16 +142,16 @@ abstract public class JsonCodecSupport<Type >
 	 * @return
 	 */
 	
-	public static
-	long [] toLongIdArray (final Collection<? extends LongIdThing> things) 
-	{
-		final long [] ids = new long [things.size ()];
-		int cnt = 0; 
-		for (final LongIdThing thing : things) { 
-			ids [cnt++] = thing.getId (); 
-		}
-		return ids; 
-	}
+//	public static
+//	long [] toLongIdArray (final Collection<? extends LongIdThing> things)
+//	{
+//		final long [] ids = new long [things.size ()];
+//		int cnt = 0;
+//		for (final LongIdThing thing : things) {
+//			ids [cnt++] = thing.getId ();
+//		}
+//		return ids;
+//	}
 	
 	/**
 	 * 
@@ -161,16 +159,16 @@ abstract public class JsonCodecSupport<Type >
 	 * @return
 	 */
 	
-	public static 
-	int [] toIntegerIdArray (final Collection <? extends IntegerIdThing> things)
-	{
-		final int [] ids = new int [things.size ()];
-		int cnt = 0; 
-		for (final IntegerIdThing thing : things) { 
-			ids [cnt++] = thing.getId (); 
-		}
-		return ids; 
-	}
+//	public static
+//	int [] toIntegerIdArray (final Collection <? extends IntegerIdThing> things)
+//	{
+//		final int [] ids = new int [things.size ()];
+//		int cnt = 0;
+//		for (final IntegerIdThing thing : things) {
+//			ids [cnt++] = thing.getId ();
+//		}
+//		return ids;
+//	}
 
 	/**
 	 * 
