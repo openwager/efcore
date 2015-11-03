@@ -32,7 +32,7 @@ public class Stopwatch
 //    }
 
     protected long start;
-    protected long stop = -1;
+    protected Long stop;
 
     public
     long start ()
@@ -51,14 +51,16 @@ public class Stopwatch
     public
     long getElapsed ()
     {
-        if (stop == -1) {
-            throw new IllegalStateException ("Not stopped.");
+        if (stop != null) {
+            return stop - start;
+        } else {
+            return System.currentTimeMillis () - start;
         }
-        return stop - start;
+        // NOT REACHED
     }
 
     @Override
-        public
+    public
     String toString ()
     {
         return elapsedToString (getElapsed ());
