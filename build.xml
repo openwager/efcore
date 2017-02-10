@@ -219,7 +219,7 @@ target=${javac.target}
 	<target name="maven-local" depends="make-pom, package, javadoc, sources">
 		<artifact:install file="${target.dir}/${output}.jar">
 			<pom refid="mypom"/>
-			<attach file="${target.dir}/${output}-sources.jar" type="jar" classifier="sources"/>
+            <attach file="${target.dir}/${output}-sources.jar" type="jar" classifier="sources"/>
 			<attach file="${target.dir}/${output}-javadoc.jar" type="jar" classifier="javadoc"/>
 		</artifact:install>
 	</target>
@@ -243,8 +243,6 @@ target=${javac.target}
 		<artifact:deploy file="${target.dir}/${output}.jar">
 			<remoteRepository refid="etherfirma.releases" />
 			<pom refid="mypom"/>
-			<attach file="${target.dir}/${output}-sources.jar" type="jar" classifier="sources"/>
-			<attach file="${target.dir}/${output}-javadoc.jar" type="jar" classifier="javadoc"/>
 		</artifact:deploy>
 	</target>
 	
