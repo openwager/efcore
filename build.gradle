@@ -20,25 +20,25 @@ configurations {
 }
 
 repositories {
-  mavenCentral ()
-/*
-  maven { 
-    name "Etherfirma RELEASES"
-    credentials { 
-      username = 'deployer'
-      password = 'squidly'
-    } 
-    url 'http://maven.etherfirma.com:8081/nexus/content/repositories/releases/'
-  }
+    mavenCentral()
 
-  maven { 
-    name "Etherfirma SNAPSHOTS"
-    credentials { 
-      username = 'deployer'
-      password = 'squidly'
-    } 
-    url 'http://maven.etherfirma.com:8081/nexus/content/repositories/snapshots/'
-  }*/
+    maven {
+        name "OpenWager RELEASES"
+        credentials {
+            username = mavenUser
+            password = mavenPassword
+        }
+        url "http://${mavenHost}/nexus/content/repositories/releases/"
+    }
+
+    maven {
+        name "OpenWager SNAPSHOTS"
+        credentials {
+            username = mavenUser
+            password = mavenPassword
+        }
+        url "http://${mavenHost}/nexus/content/repositories/snapshots/"
+    }
 }
 
 uploadArchives { 
@@ -46,11 +46,11 @@ uploadArchives {
     mavenDeployer { 
       configuration = configurations.deployerJars
 
-      snapshotRepository (url: 'http://maven.etherfirma.com:8081/nexus/content/repositories/snapshots') { 
+      snapshotRepository (url: "http://${mavenHost}/nexus/content/repositories/snapshots") { 
         authentication (userName: mavenUser, password: mavenPassword)
       }
  
-      repository (url: 'http://maven.etherfirma.com:8081/nexus/content/repositories/releases/') { 
+      repository (url: "http://${mavenHost}/nexus/content/repositories/releases/") { 
         authentication (userName: mavenUser, password: mavenPassword)
       }
     }
