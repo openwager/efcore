@@ -1,6 +1,6 @@
 package com.weaselworks.util;
 
-import org.vertx.java.core.json.JsonObject;
+import io.vertx.core.json.JsonObject;
 
 /**
  * 
@@ -72,10 +72,10 @@ public class JsonObjectUtil
 		for (int i = 0; i < len; i ++) {
 			final String node = path [i]; 
 			if (i != len - 1) { 
-				o = o.getObject (node); 
+				o = o.getJsonObject (node);
 			} else { 
-				if (o.containsField (node)) { 
-					return (T) o.getField (node); 
+				if (o.containsKey (node)) {
+					return (T) o.getValue (node);
 				} else {  
 					System.out.println ("DEFAULT"); 
 					return  def; 
@@ -90,17 +90,17 @@ public class JsonObjectUtil
 	public static
 	JsonObject merge (final JsonObject a, final JsonObject b)
 	{
-		for (final String field : b.getFieldNames ()) {
-			final Object from = b.getField (field); 
-			if (a.containsField (field)) {
-				final Object to = a.getField (field); 
+		for (final String field : b.fieldNames ()) {
+			final Object from = b.getValue (field);
+			if (a.containsKey (field)) {
+				final Object to = a.getValue (field);
 				if (to instanceof JsonObject && from instanceof JsonObject) { 
 					merge ((JsonObject) to, (JsonObject) from); 
 				} else { 
-					a.putValue (field, from); 
+					a.put (field, from);
 				}
 			} else { 
-				a.putValue (field, from); 
+				a.put (field, from);
 			}
 		}
 		return a; 
@@ -109,7 +109,7 @@ public class JsonObjectUtil
 	/**
 	 * 
 	 * @param json
-	 * @param path
+	 * @param paths
 	 * @param value
 	 */
 	
@@ -119,14 +119,14 @@ public class JsonObjectUtil
 		final int len = paths.length; 
 		for (int i = 0; i < len - 1; i ++) { 
 			final String path = paths [i]; 
-			JsonObject child = json.getObject (path); 
+			JsonObject child = json.getJsonObject (path);
 			if (child == null) { 
 				child = new JsonObject ();
-				json.putObject (path, child); 			
+				json.put (path, child);
 			} 
 			json = child; 
 		}
-		json.putValue (paths [len - 1], value); 
+		json.put (paths [len - 1], value);
 		return; 
 	}
 }	
